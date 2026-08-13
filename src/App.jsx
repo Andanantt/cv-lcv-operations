@@ -37,6 +37,7 @@ const C = {
 const GLOBAL_CSS = `
   * { box-sizing: border-box; }
   html, body, #root { height:100%; }
+  html, body { overflow:hidden; }
   body { margin:0; -webkit-font-smoothing:antialiased; }
   ::-webkit-scrollbar { width:8px; height:8px; }
   ::-webkit-scrollbar-thumb { background:#C7D0DB; border-radius:4px; }
@@ -1263,7 +1264,7 @@ function Sidebar({ collapsed, setCollapsed, expanded, toggleExpand, activePage, 
 function Header({ pageTitle, breadcrumb, module }) {
   const dateStr = "23 Jun 2026";
   const accent = module === "LCV" ? C.onDelivery : module === "CV" ? "#3C9A73" : C.border;
-  const tint = module === "LCV" ? C.onDeliveryBg : module === "CV" ? "#EEF6F1" : "#fff";
+  const tint = module === "LCV" ? C.onDeliveryBg : module === "CV" ? "#D7F2E3" : "#fff";
   return (
     <div style={{ height: 74, minHeight: 74, background: tint, borderBottom: `2px solid ${accent}`, display: "flex", alignItems: "center", padding: "0 24px", transition: "background .15s, border-color .15s" }}>
       <div>
@@ -1318,9 +1319,9 @@ export default function App() {
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} expanded={expanded} toggleExpand={toggleExpand}
         activePage={activePage} setActivePage={setActivePage} />
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden", minWidth: 0 }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden", minWidth: 0, minHeight: 0 }}>
         <Header pageTitle={pageTitle} breadcrumb={breadcrumb} module={activePage === "admin" ? null : module} />
-        <div style={{ flex: 1, overflow: "auto", padding: "22px 26px" }}>
+        <div style={{ flex: 1, overflow: "auto", padding: "22px 26px", minHeight: 0 }}>
           {activePage === "admin" && <AdministrationPage />}
           {activePage !== "admin" && tabKey === "overview" && <OverviewDashboard data={data} key={`${module}-overview`} />}
           {activePage !== "admin" && tabKey === "motorpool" && <MotorpoolTab data={data} setData={setData} key={`${module}-motorpool`} />}
