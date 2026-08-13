@@ -1262,7 +1262,7 @@ function Sidebar({ collapsed, setCollapsed, expanded, toggleExpand, activePage, 
 function Header({ pageTitle, breadcrumb, module }) {
   const dateStr = "23 Jun 2026";
   const accent = module === "LCV" ? C.onDelivery : module === "CV" ? "#3C9A73" : C.border;
-  const tint = module === "LCV" ? C.onDeliveryBg : module === "CV" ? "#E2F7EC" : "#fff";
+  const tint = module === "LCV" ? C.onDeliveryBg : module === "CV" ? "#E8FAF1" : "#fff";
   return (
     <div style={{ height: 74, minHeight: 74, background: tint, borderBottom: `2px solid ${accent}`, display: "flex", alignItems: "center", padding: "0 24px", transition: "background .15s, border-color .15s" }}>
       <div>
