@@ -1162,12 +1162,12 @@ function AdministrationPage() {
    SIDEBAR
 ══════════════════════════════════════════════════════════════════════════ */
 const NAV_GROUPS = [
-  { key: "cv", label: "CV", color: "#18B979", activeColor: "#1F9C6E", icon: IconLorry, children: [
+  { key: "cv", label: "CV", color: "#2496E8", activeColor: C.blue, icon: IconLorry, children: [
     { key: "cv-overview", label: "Overview Dashboard" },
     { key: "cv-motorpool", label: "Motorpool" },
     { key: "cv-transporter", label: "Transporter" },
   ]},
-  { key: "lcv", label: "LCV", color: "#2496E8", activeColor: C.blue, icon: IconPickupTruck, children: [
+  { key: "lcv", label: "LCV", color: "#18B979", activeColor: "#1F9C6E", icon: IconPickupTruck, children: [
     { key: "lcv-overview", label: "Overview Dashboard" },
     { key: "lcv-motorpool", label: "Motorpool" },
     { key: "lcv-transporter", label: "Transporter" },
@@ -1262,8 +1262,8 @@ function Sidebar({ collapsed, setCollapsed, expanded, toggleExpand, activePage, 
 ══════════════════════════════════════════════════════════════════════════ */
 function Header({ pageTitle, breadcrumb, module }) {
   const dateStr = "23 Jun 2026";
-  const accent = module === "LCV" ? C.onDelivery : module === "CV" ? "#3C9A73" : C.border;
-  const tint = module === "LCV" ? C.onDeliveryBg : module === "CV" ? "#E8FAF1" : "#fff";
+  const accent = module === "CV" ? C.onDelivery : module === "LCV" ? "#3C9A73" : C.border;
+  const tint = module === "CV" ? C.onDeliveryBg : module === "LCV" ? "#E8FAF1" : "#fff";
   return (
     <div style={{ height: 74, minHeight: 74, background: tint, borderBottom: `2px solid ${accent}`, display: "flex", alignItems: "center", padding: "0 24px", transition: "background .15s, border-color .15s" }}>
       <div>
