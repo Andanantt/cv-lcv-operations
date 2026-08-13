@@ -438,8 +438,7 @@ function JobTypeBreakdown({ rows, totalJob, breakdownTotal }) {
 
   return (
     <div style={{ ...cardStyle, padding: 18 }}>
-      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", color: C.blue, marginBottom: 4 }}>INSPECTION</div>
-      <div style={sectionTitle}>Job Type Breakdown</div>
+      <div style={sectionTitle}>Inspection Status</div>
       <div style={sectionSub}>Jobs by type and PDI result</div>
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
@@ -492,9 +491,8 @@ function DeliveryStatusSummary({ rows, totalJob }) {
   const total = rows.reduce((s, r) => s + r.count, 0);
   return (
     <div style={{ ...cardStyle, padding: 18 }}>
-      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", color: C.onDelivery, marginBottom: 4 }}>DELIVERY STATUS</div>
-      <div style={sectionTitle}>Overall Delivery Status Summary</div>
-      <div style={sectionSub}>Jobs breakdown by delivery status</div>
+      <div style={sectionTitle}>Delivery Status</div>
+      <div style={sectionSub}>Overall Delivery Status Summary</div>
       {rows.map((r) => (
         <div key={r.key} style={{ marginBottom: 14 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
@@ -1264,7 +1262,7 @@ function Sidebar({ collapsed, setCollapsed, expanded, toggleExpand, activePage, 
 function Header({ pageTitle, breadcrumb, module }) {
   const dateStr = "23 Jun 2026";
   const accent = module === "LCV" ? C.onDelivery : module === "CV" ? "#3C9A73" : C.border;
-  const tint = module === "LCV" ? C.onDeliveryBg : module === "CV" ? "#D7F2E3" : "#fff";
+  const tint = module === "LCV" ? C.onDeliveryBg : module === "CV" ? "#E2F7EC" : "#fff";
   return (
     <div style={{ height: 74, minHeight: 74, background: tint, borderBottom: `2px solid ${accent}`, display: "flex", alignItems: "center", padding: "0 24px", transition: "background .15s, border-color .15s" }}>
       <div>
