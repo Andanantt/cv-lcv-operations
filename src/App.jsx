@@ -28,10 +28,11 @@ const C = {
   text: "#172B4D",
   textSec: "#5F6B7A",
   textMuted: "#8A96A6",
-  ok: "#18B979", okBg: "#E8F7EF",
-  ng: "#E84C4C", ngBg: "#FDECEC",
-  pending: "#F5A900", pendingBg: "#FFF5DC",
-  onDelivery: "#2496E8", onDeliveryBg: "#EAF4FF",
+  ok: "#18B979", okBg: "#E8F7EF", okDark: "#0E7A4C",
+  ng: "#E84C4C", ngBg: "#FDECEC", ngDark: "#A83232",
+  pending: "#F5A900", pendingBg: "#FFF5DC", pendingDark: "#8A5C00",
+  onDelivery: "#2496E8", onDeliveryBg: "#EAF4FF", onDeliveryDark: "#0F5FA0",
+  blueDark: "#0B3768",
 };
 
 const GLOBAL_CSS = `
@@ -398,7 +399,7 @@ function SectionHeader({ icon, title, meta }) {
   );
 }
 
-function StatCard({ icon, accent, tint, label, sub, value }) {
+function StatCard({ icon, accent, valueColor, tint, label, sub, value }) {
   return (
     <div className="card-hover" style={{
       background: tint, borderRadius: 10, borderLeft: `4px solid ${accent}`,
@@ -411,7 +412,7 @@ function StatCard({ icon, accent, tint, label, sub, value }) {
         </div>
       </div>
       <div>
-        <div style={{ fontSize: 30, fontWeight: 700, color: accent, lineHeight: 1 }}>{value}</div>
+        <div style={{ fontSize: 30, fontWeight: 700, color: valueColor || accent, lineHeight: 1 }}>{value}</div>
         {sub && <div style={{ fontSize: 11.5, color: C.textSec, marginTop: 4 }}>{sub}</div>}
       </div>
     </div>
@@ -749,20 +750,20 @@ function OverviewDashboard({ data }) {
       <div style={{ marginBottom: 22 }}>
         <SectionHeader icon={<IconClipboard size={14} />} title="INSPECTION SUMMARY" meta={dateLabel} />
         <StatGrid cards={[
-          { icon: <IconClipboard size={16} />, accent: C.blue, tint: C.blueLight, label: "Total inspection", value: requestedInspection, sub: dateLabel },
-          { icon: <IconCheck size={16} />, accent: C.ok, tint: C.okBg, label: "PDI OK", value: sentOk, sub: `${pct(sentOk, requestedInspection)}%` },
-          { icon: <IconWrench size={16} />, accent: C.ng, tint: C.ngBg, label: "PDI NG", value: sentNg, sub: `${pct(sentNg, requestedInspection)}%` },
-          { icon: <IconClock size={16} />, accent: C.pending, tint: C.pendingBg, label: "PDI Pending", value: sentPending, sub: `${pct(sentPending, requestedInspection)}%` },
+          { icon: <IconClipboard size={16} />, accent: C.blue, valueColor: C.blueDark, tint: C.blueLight, label: "Total inspection", value: requestedInspection, sub: dateLabel },
+          { icon: <IconCheck size={16} />, accent: C.ok, valueColor: C.okDark, tint: C.okBg, label: "PDI OK", value: sentOk, sub: `${pct(sentOk, requestedInspection)}%` },
+          { icon: <IconWrench size={16} />, accent: C.ng, valueColor: C.ngDark, tint: C.ngBg, label: "PDI NG", value: sentNg, sub: `${pct(sentNg, requestedInspection)}%` },
+          { icon: <IconClock size={16} />, accent: C.pending, valueColor: C.pendingDark, tint: C.pendingBg, label: "PDI Pending", value: sentPending, sub: `${pct(sentPending, requestedInspection)}%` },
         ]} />
       </div>
 
       <div style={{ marginBottom: 16 }}>
         <SectionHeader icon={<IconTruck size={14} />} title="DELIVERY STATUS" meta="All filtered jobs" />
         <StatGrid cards={[
-          { icon: <IconClipboard size={16} />, accent: C.blue, tint: C.blueLight, label: "Total jobs", value: totalJob, sub: dateLabel },
-          { icon: <IconRoute size={16} />, accent: C.ok, tint: C.okBg, label: "Ready to assign", value: readyToAssign, sub: "PDI OK, no driver" },
-          { icon: <IconTruck size={16} />, accent: C.onDelivery, tint: C.onDeliveryBg, label: "On delivery", value: onDeliveryCount, sub: "In transit" },
-          { icon: <IconCheckCircle size={16} />, accent: C.ok, tint: C.okBg, label: "Delivered", value: deliveredCount, sub: "Completed" },
+          { icon: <IconClipboard size={16} />, accent: C.blue, valueColor: C.blueDark, tint: C.blueLight, label: "Total jobs", value: totalJob, sub: dateLabel },
+          { icon: <IconRoute size={16} />, accent: C.ok, valueColor: C.okDark, tint: C.okBg, label: "Ready to assign", value: readyToAssign, sub: "PDI OK, no driver" },
+          { icon: <IconTruck size={16} />, accent: C.onDelivery, valueColor: C.onDeliveryDark, tint: C.onDeliveryBg, label: "On delivery", value: onDeliveryCount, sub: "In transit" },
+          { icon: <IconCheckCircle size={16} />, accent: C.ok, valueColor: C.okDark, tint: C.okBg, label: "Delivered", value: deliveredCount, sub: "Completed" },
         ]} />
       </div>
       <div className="analytics-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 16 }}>
