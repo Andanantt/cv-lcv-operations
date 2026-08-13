@@ -650,7 +650,7 @@ function InspectionQueue({ rows, dateLabel }) {
             )}
             {pageRows.map((r, i) => (
               <tr key={r.jobNo} className="tbl-row" style={{ borderBottom: `1px solid ${C.divider}`, height: 40 }}>
-                <td style={{ padding: "0 14px", fontFamily: "monospace", color: C.blue, whiteSpace: "nowrap" }}>{r.jobNo}</td>
+                <td style={{ padding: "0 14px", fontFamily: "monospace", fontWeight: 700, color: r.jobNo.startsWith("LCV") ? C.ok : C.blue, whiteSpace: "nowrap" }}>{r.jobNo}</td>
                 <td style={{ padding: "0 14px", whiteSpace: "nowrap", color: C.text }}>{r.jobType}</td>
                 <td style={{ padding: "0 14px", fontFamily: "monospace", color: C.textSec }}>{r.engine}</td>
                 <td style={{ padding: "0 14px", fontFamily: "monospace", fontSize: 12, color: C.textSec }}>{r.vin}</td>
@@ -906,7 +906,7 @@ function MotorpoolTab({ data, setData }) {
                     <tr key={row.no} className="tbl-row" onClick={() => !isEdit && setSelRow(row)}
                       style={{ borderBottom: `1px solid ${C.divider}`, cursor: "pointer", background: selRow?.no === row.no ? C.blueLight : "#fff" }}>
                       <td style={{ padding: "9px 12px", color: C.textSec }}>{row.no}</td>
-                      <td style={{ padding: "9px 12px", fontFamily: "monospace", color: C.blue, whiteSpace: "nowrap" }}>{row.jobNo}</td>
+                      <td style={{ padding: "9px 12px", fontFamily: "monospace", fontWeight: 700, color: row.jobNo.startsWith("LCV") ? C.ok : C.blue, whiteSpace: "nowrap" }}>{row.jobNo}</td>
                       <td style={{ padding: "9px 12px", whiteSpace: "nowrap" }}>{row.jobType}</td>
                       <td style={{ padding: "9px 12px", fontFamily: "monospace", color: C.textSec }}>{row.engine}</td>
                       <td style={{ padding: "9px 12px", fontFamily: "monospace", fontSize: 12, color: C.textSec }}>{row.vin}</td>
@@ -1079,7 +1079,7 @@ function TransporterTab({ data, setData }) {
                     <tr key={row.no} className="tbl-row" onClick={() => !isEdit && setSelRow(row)}
                       style={{ borderBottom: `1px solid ${C.divider}`, cursor: "pointer", background: selRow?.no === row.no ? C.blueLight : "#fff" }}>
                       <td style={{ padding: "9px 12px", color: C.textSec }}>{row.no}</td>
-                      <td style={{ padding: "9px 12px", fontFamily: "monospace", color: C.blue, whiteSpace: "nowrap" }}>{row.jobNo}</td>
+                      <td style={{ padding: "9px 12px", fontFamily: "monospace", fontWeight: 700, color: row.jobNo.startsWith("LCV") ? C.ok : C.blue, whiteSpace: "nowrap" }}>{row.jobNo}</td>
                       <td style={{ padding: "9px 12px", whiteSpace: "nowrap" }}>{row.jobType}</td>
                       <td style={{ padding: "9px 12px", fontFamily: "monospace", color: C.textSec }}>{row.engine}</td>
                       <td style={{ padding: "9px 12px" }}>{row.portion}</td>
